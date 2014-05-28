@@ -13,24 +13,16 @@ public class Node {
     private String name;
 
     /**
-     * Node's value.
-     */
-    private Object value;
-
-    /**
-
      * Node's neighbours.
      */
     private List<Node> neighbours;
 
-    public Node(String name, Object value) {
+    public Node(String name) {
         this.name = name;
-        this.value = value;
     }
 
-    public Node(String name, Object value, List<Node> neighbours) {
+    public Node(String name, List<Node> neighbours) {
         this.name = name;
-        this.value = value;
         this.neighbours = neighbours;
     }
 
@@ -50,11 +42,13 @@ public class Node {
         this.neighbours = neighbours;
     }
 
-    public Object getValue() {
-        return value;
-    }
-
-    public void setValue(Object value) {
-        this.value = value;
+    /**
+     * Add new neighbour.
+     * @param node new neighbour node
+     */
+    public void addNeighbour(Node node) {
+        if (this.neighbours != null) {
+            this.neighbours.add(node);
+        }
     }
 }
