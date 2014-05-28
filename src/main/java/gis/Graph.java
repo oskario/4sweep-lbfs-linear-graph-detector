@@ -26,6 +26,7 @@ public class Graph {
      * @return true if the graph is interval, otherwise false
      */
     public boolean isInterval() {
+
         return false;
     }
 

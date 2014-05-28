@@ -20,6 +20,6 @@ public class LBFS {
     }
 
     public static boolean LBFSstar(List<Node> lbfs, List<Node> lbfsplus) {
-        return null;
+        return false;
     }
 }
