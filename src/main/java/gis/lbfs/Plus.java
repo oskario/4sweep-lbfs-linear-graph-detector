@@ -2,26 +2,26 @@ package gis.lbfs;
 
 import gis.Graph;
 import gis.Node;
+import gis.Result;
 
-import java.util.List;
+public class Plus extends GeneralProcedure implements LBFS {
 
-public class Plus  {
+    private final Result lastResult;
 
-	private Graph graph;
+    public Plus(Graph g, Result lastResult) {
+        super(g);
+        this.lastResult = lastResult;
+    }
 
-	private List<Node> nodes;
+    public Result start() {
+        Node node = getStartingNode();
+        node.addLabel(graph.size());
+        run(node);
+        return this.result;
+    }
 
-	private Node startNode;
-
-	public Plus(Graph g, List<Node> t) {
-		this.graph = g;
-		this.nodes = t;
-
-		// Starting node is the last of list t
-		this.startNode = t.get(t.size() - 1);
-	}
-
-	public List<Node> run() {
-		return null;
-	}
+    private Node getStartingNode() {
+        String lastNodeName = lastResult.get(lastResult.size()-1).getName();
+        return graph.getNodeByName(lastNodeName);
+    }
 }

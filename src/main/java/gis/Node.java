@@ -114,4 +114,9 @@ public class Node {
             return -1;
         return 0;
     }
+
+    public void reset() {
+        labels = new ArrayList<Integer>();
+        number = 0;
+    }
 }

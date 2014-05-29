@@ -1,6 +1,7 @@
 package gis;
 
 import gis.lbfs.Generic;
+import gis.lbfs.Plus;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -30,8 +31,17 @@ public class Graph {
 	 */
 	public boolean isInterval() {
         Generic generic = new Generic(this);
-        Result result = generic.start();
-        result.print();
+        Result sigma = generic.start();
+        System.out.println("SIGMA:");
+        sigma.print();
+
+        if (sigma != null) {
+            this.clean();
+            Plus plus = new Plus(this, sigma);
+            Result sigmaPlus = plus.start();
+            System.out.println("SIGMA PLUS:");
+            sigmaPlus.print();
+        }
 		return true;
 	}
 
@@ -68,5 +78,13 @@ public class Graph {
             }
         }
         return null;
+    }
+
+    public void clean()
+    {
+        for (Node n: nodes)
+        {
+            n.reset();
+        }
     }
 }
