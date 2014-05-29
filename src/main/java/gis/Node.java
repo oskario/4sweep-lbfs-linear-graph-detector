@@ -1,6 +1,7 @@
 package gis;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -118,5 +119,22 @@ public class Node {
     public void reset() {
         labels = new ArrayList<Integer>();
         number = 0;
+    }
+
+    public void print() {
+        if (name != null)
+            System.out.print(name + " ");
+        if (labels.size() > 0)
+        {
+            for (Integer label : labels) System.out.print(" lab:" + label);
+            System.out.print(" ");
+        }
+        if (number > 0)
+            System.out.print(" num:" + number + " ");
+        if (neighbours != null)
+        {
+            System.out.print(":");
+            for (Object neighbour : neighbours) System.out.print(" " + neighbour);
+        }
     }
 }

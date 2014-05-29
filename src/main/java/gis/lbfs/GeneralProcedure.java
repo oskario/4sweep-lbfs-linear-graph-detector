@@ -9,11 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * User: Pawel
- * Date: 2014-05-29
- * Time: 20:07
- */
 public abstract class GeneralProcedure {
     private int size = 0;
     protected Result result = new Result();
