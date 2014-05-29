@@ -1,4 +1,4 @@
-package lbfs;
+package gis.lbfs;
 
 import gis.Graph;
 import gis.Node;
