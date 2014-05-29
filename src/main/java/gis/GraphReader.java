@@ -4,6 +4,7 @@ import gis.error.IncorrectInputFormat;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,23 +17,23 @@ public class GraphReader {
      *
      * Input format:
      * ```
-     * [node name] [neighbour 1] [neighbour 2] ...
+     * [node name] [neighbor 1] [neighbor 2] ...
      * ```
-     * @param input input string
+     * @param input list of lines from file
      * @return newly created Graph
      * @throws IncorrectInputFormat when given input is in incorrect format
      */
-    public static Graph read(String input) throws IncorrectInputFormat {
-        String lines[] = input.split("\n");
+    public static Graph read(List<String> input) throws IncorrectInputFormat {
         Map<String, Node> nodes = new HashMap<String, Node>();
-
-        for (int i = 0; i < lines.length; i++) {
-            String line = lines[i];
+        
+        int i = 1;
+        for (String line : input) {
             String params[] = line.split(" ");
-
-            if (params.length < 2)
+            
+            if (params.length < 2) 
                 throw new IncorrectInputFormat("Not enough parameters in line " + i + " (" + line + ")");
-
+            
+            
             Node node = new Node(params[0]);
 
             for (int j = 1; j < params.length; j++) {
@@ -45,6 +46,8 @@ public class GraphReader {
 
                 node.addNeighbour(nodes.get(neighbourName));
             }
+            
+            i++;
         }
 
         return new Graph(new LinkedList<Node>(nodes.values()));
