@@ -7,19 +7,19 @@ import java.util.List;
  */
 public class LBFS {
 
-    public static List<Node> LBFS(Graph graph, Node first) {
+    public static List<Node> lbfs(Graph graph, Node first) {
         return null;
     }
 
-    public static List<Node> LBFSplus(Graph graph, List<Node> first) {
+    public static List<Node> lbfsPlus(Graph graph, List<Node> first) {
         return null;
     }
 
-    public static List<Node> LBFSplusplus(List<Node> first) {
+    public static List<Node> lbfsPlusPlus(List<Node> first) {
         return null;
     }
 
-    public static boolean LBFSstar(List<Node> lbfs, List<Node> lbfsplus) {
+    public static boolean lbfsStar(List<Node> lbfs, List<Node> lbfsplus) {
         return false;
     }
 }
