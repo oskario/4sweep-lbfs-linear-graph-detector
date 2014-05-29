@@ -10,7 +10,8 @@ import java.util.List;
 class Run {
 	public static void main(String[] args) {
 		if (args.length != 1) {
-			System.out.println("Incorrect number of arguments (input graph file missing).\n");
+			System.out
+					.println("Incorrect number of arguments (input graph file missing).\n");
 			return;
 		}
 
@@ -19,19 +20,20 @@ class Run {
 		try {
 			List<String> input = readFile(filename);
 			Graph graph = GraphReader.read(input);
-			
+
 			if (graph.isInterval())
 				System.out.println("Graph is interval");
 			else
 				System.out.println("Graph is not interval");
-			
+
 		} catch (FileNotFoundException e) {
 			System.err.format("File '%s' was not found", filename);
-			
+
 		} catch (IOException e) {
-			System.err.format("IOException while trying to read '%s'", filename);
+			System.err
+					.format("IOException while trying to read '%s'", filename);
 			e.printStackTrace();
-			
+
 		} catch (Exception e) {
 			System.err.format("Unknown exception occured: %s", e.getMessage());
 			e.printStackTrace();
@@ -40,7 +42,9 @@ class Run {
 
 	/**
 	 * Reads file line by line to list of strings.
-	 * @param filename target filename
+	 * 
+	 * @param filename
+	 *            target filename
 	 * @return list of lines
 	 * @throws IOException
 	 */
@@ -53,7 +57,7 @@ class Run {
 		while ((line = reader.readLine()) != null) {
 			records.add(line);
 		}
-		
+
 		reader.close();
 		return records;
 	}

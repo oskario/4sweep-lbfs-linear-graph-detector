@@ -12,27 +12,26 @@ import static org.junit.Assert.*;
  */
 public class GraphTest {
 
-    @SuppressWarnings("serial")
 	@Test
-    public void testSize() throws Exception {
-        Graph graph = new Graph();
+	public void testSize() throws Exception {
+		Graph graph = new Graph();
 
-        assertEquals(graph.size(), 0);
+		assertEquals(graph.size(), 0);
 
-        graph = new Graph();
-        graph.addNode(new Node("A"));
-        graph.addNode(new Node("B"));
-        graph.addNode(new Node("C"));
+		graph = new Graph();
+		graph.addNode(new Node("A"));
+		graph.addNode(new Node("B"));
+		graph.addNode(new Node("C"));
 
-        assertEquals(graph.size(), 3);
+		assertEquals(graph.size(), 3);
 
-        List<Node> nodes = new LinkedList<Node>() {};
-        nodes.add(new Node("D"));
-        nodes.add(new Node("E"));
-        nodes.add(new Node("F"));
-        nodes.add(new Node("G"));
-        graph = new Graph(nodes);
+		List<Node> nodes = new LinkedList<Node>();
+		nodes.add(new Node("D"));
+		nodes.add(new Node("E"));
+		nodes.add(new Node("F"));
+		nodes.add(new Node("G"));
+		graph = new Graph(nodes);
 
-        assertEquals(graph.size(), 4);
-    }
+		assertEquals(graph.size(), 4);
+	}
 }
