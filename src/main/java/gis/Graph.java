@@ -1,5 +1,7 @@
 package gis;
 
+import gis.lbfs.Generic;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,8 +29,10 @@ public class Graph {
 	 * @return true if the graph is interval, otherwise false
 	 */
 	public boolean isInterval() {
-
-		return false;
+        Generic generic = new Generic(this);
+        Result result = generic.start();
+        result.print();
+		return true;
 	}
 
 	/**
@@ -56,4 +60,13 @@ public class Graph {
 			this.nodes.add(node);
 		}
 	}
+
+    public Node getNodeByName(String neighbourName) {
+        for(Node node : this.nodes) {
+            if (node.getName().equals(neighbourName)) {
+                return node;
+            }
+        }
+        return null;
+    }
 }

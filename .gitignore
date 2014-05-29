@@ -15,4 +15,6 @@
 log/
 target/
 
+utils/
+
 .README.md.html

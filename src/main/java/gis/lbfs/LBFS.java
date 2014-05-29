@@ -1,6 +1,7 @@
 package gis.lbfs;
 
 import gis.Node;
+import gis.Result;
 
 import java.util.List;
 
@@ -14,5 +15,5 @@ public interface LBFS {
 	 * 
 	 * @return ordered list of nodes
 	 */
-	public List<Node> run();
+	public Result start();
 }

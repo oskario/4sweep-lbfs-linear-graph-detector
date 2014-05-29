@@ -5,7 +5,7 @@ import gis.Node;
 
 import java.util.List;
 
-public class Plus implements LBFS {
+public class Plus  {
 
 	private Graph graph;
 

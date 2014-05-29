@@ -4,7 +4,7 @@ import gis.Node;
 
 import java.util.List;
 
-public class Star implements LBFS {
+public class Star {
 
 	private List<Node> generic;
 
