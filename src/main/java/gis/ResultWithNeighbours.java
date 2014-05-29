@@ -36,6 +36,17 @@ public class ResultWithNeighbours extends Hashtable<String, Node> {
         return node.getName();
     }
 
+    public int getByName(String name)
+    {
+        Object[] v = this.values().toArray();
+        for (Object object : v) {
+            Node n = (Node) object;
+            if (n.getName().equals(name))
+                return n.getNeighbours().size();
+        }
+        return 0;
+    }
+
     public void print()
     {
         for (Node node : this.values()) {

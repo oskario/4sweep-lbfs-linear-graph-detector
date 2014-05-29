@@ -45,6 +45,15 @@ public class Result extends ArrayList<NodeNameWithNumber>  {
         return min;
     }
 
+    public int getByName(String name)
+    {
+        for(NodeNameWithNumber n: this) {
+            if (n.getName().equals(name))
+                return n.getNumber();
+        }
+        return -1;
+    }
+
     /**
      * For debugging.
      */
