@@ -12,7 +12,8 @@ import static org.junit.Assert.*;
  */
 public class GraphTest {
 
-    @Test
+    @SuppressWarnings("serial")
+	@Test
     public void testSize() throws Exception {
         Graph graph = new Graph();
 
