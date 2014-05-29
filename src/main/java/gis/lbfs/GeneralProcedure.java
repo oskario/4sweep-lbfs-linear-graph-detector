@@ -14,7 +14,7 @@ import java.util.Random;
  * Date: 2014-05-29
  * Time: 20:07
  */
-public class GeneralProcedure {
+public abstract class GeneralProcedure {
     private int size = 0;
     protected Result result = new Result();
     protected Graph graph;
@@ -88,9 +88,7 @@ public class GeneralProcedure {
 		*/
         if (max != null && max.getLabels().size() < 2 && l.size() > 0)
         {
-            int random = new Random().nextInt(l.size());
-            n = l.get(random);
-            max = graph.getNodeByName(n.getName());
+            max = selectInCaseOfTie(l);
         }
 		/*
 		* All the neighbors are numbered, so return null
@@ -100,4 +98,6 @@ public class GeneralProcedure {
 
         return max;
     }
+
+    public abstract Node selectInCaseOfTie(ArrayList<Node> l);
 }

@@ -16,4 +16,5 @@ public interface LBFS {
 	 * @return ordered list of nodes
 	 */
 	public Result start();
+    public Node getStartingNode();
 }

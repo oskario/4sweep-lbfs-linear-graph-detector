@@ -24,16 +24,26 @@ public class Generic extends GeneralProcedure implements LBFS {
     }
 
     public Result start() {
-        Node startingNode = getRandomNode();
+        Node startingNode = getStartingNode();
         startingNode.addLabel(graph.size());
         run(startingNode);
-        return this.result;
+        if (this.result.size() < graph.size())
+            return null;
+        else
+            return this.result;
     }
 
-    private Node getRandomNode() {
+    public Node getStartingNode() {
         int random = new Random().nextInt(graph.size());
         return graph.getNodes().get(random);
     }
 
-
+    public Node selectInCaseOfTie(ArrayList<Node> l) {
+        Node n;
+        Node max;
+        int random = new Random().nextInt(l.size());
+        n = l.get(random);
+        max = graph.getNodeByName(n.getName());
+        return max;
+    }
 }

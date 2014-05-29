@@ -4,6 +4,9 @@ import gis.Graph;
 import gis.Node;
 import gis.Result;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Plus extends GeneralProcedure implements LBFS {
 
     private final Result lastResult;
@@ -17,11 +20,23 @@ public class Plus extends GeneralProcedure implements LBFS {
         Node node = getStartingNode();
         node.addLabel(graph.size());
         run(node);
-        return this.result;
+        if (this.result.size() < graph.size())
+            return null;
+        else
+            return this.result;
     }
 
-    private Node getStartingNode() {
+    public Node getStartingNode() {
         String lastNodeName = lastResult.get(lastResult.size()-1).getName();
         return graph.getNodeByName(lastNodeName);
+    }
+
+    public Node selectInCaseOfTie(ArrayList<Node> l) {
+        Node max;
+
+        String name = lastResult.getNodeWithMinNumber(l);
+        max = graph.getNodeByName(name);
+
+        return max;
     }
 }
