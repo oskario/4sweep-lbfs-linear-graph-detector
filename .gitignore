@@ -16,5 +16,7 @@ log/
 target/
 
 utils/
+out/
+src/main/java/META-INF/
 
 .README.md.html
