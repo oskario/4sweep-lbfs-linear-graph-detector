@@ -4,6 +4,9 @@ import gis.Node;
 
 import java.util.List;
 
+/**
+ * Generic Lexicographic Breadth First Search (LBFS) Algorithm.
+ */
 public interface LBFS {
 	
 	/**
