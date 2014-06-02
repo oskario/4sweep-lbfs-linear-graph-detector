@@ -31,51 +31,76 @@ public class Graph {
 	 * 
 	 * @return true if the graph is interval, otherwise false
 	 */
-	public boolean isInterval() {
+	public boolean isInterval(Boolean isDebugMode) {
         try {
             Generic generic = new Generic(this);
             Result sigma = generic.start();
-            System.out.println("SIGMA:");
-            sigma.print();
+
+            if (isDebugMode) {
+                System.out.println("SIGMA:");
+                sigma.print();
+            }
 
             if (sigma != null) {
                 this.clean();
                 Plus plus = new Plus(this, sigma);
                 Result sigmaPlus = plus.start();
-                System.out.println("SIGMA PLUS:");
-                sigmaPlus.print();
+
+                if (isDebugMode) {
+                    System.out.println("SIGMA PLUS:");
+                    sigmaPlus.print();
+                }
+
 
                 if (sigmaPlus != null) {
                     Result iPlus = getIplus(this, sigmaPlus);
-                    System.out.println("I+:");
-                    iPlus.print();
+
+                    if (isDebugMode) {
+                        System.out.println("I+:");
+                        iPlus.print();
+                    }
 
                     ResultWithNeighbours aNbrs = ABNeighbors(this, sigmaPlus);
-                    System.out.println("A:");
-                    aNbrs.print();
+
+                    if (isDebugMode) {
+                        System.out.println("A:");
+                        aNbrs.print();
+                    }
 
                     this.clean();
 
                     plus = new Plus(this, sigmaPlus);
                     Result sigmaPlusPlus = plus.start();
-                    System.out.println("SIGMA PLUS PLUS:");
-                    sigmaPlusPlus.print();
+
+                    if (isDebugMode) {
+                        System.out.println("SIGMA PLUS PLUS:");
+                        sigmaPlusPlus.print();
+                    }
 
                     if (sigmaPlusPlus != null) {
                         Result iPlusPlus = getIplus(this, sigmaPlusPlus);
-                        System.out.println("I++:");
-                        iPlusPlus.print();
+
+                        if (isDebugMode) {
+                            System.out.println("I++:");
+                            iPlusPlus.print();
+                        }
 
                         ResultWithNeighbours bNbrs = ABNeighbors(this, sigmaPlusPlus);
-                        System.out.println("B:");
-                        bNbrs.print();
+
+                        if (isDebugMode) {
+                            System.out.println("B:");
+                            bNbrs.print();
+                        }
 
                         this.clean();
 
                         Star star = new Star(this, sigmaPlus, sigmaPlusPlus, iPlus, iPlusPlus, aNbrs, bNbrs);
                         Result sigmaStar = star.start();
-                        System.out.println("SIGMA*:");
-                        sigmaStar.print();
+
+                        if (isDebugMode) {
+                            System.out.println("SIGMA*:");
+                            sigmaStar.print();
+                        }
                         if (sigmaStar != null)
                             return true;
                     }

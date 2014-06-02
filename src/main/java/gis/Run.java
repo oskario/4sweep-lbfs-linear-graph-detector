@@ -9,19 +9,20 @@ import java.util.List;
 
 class Run {
 	public static void main(String[] args) {
-		if (args.length != 1) {
+		if (args.length < 0 || args.length > 2) {
 			System.out
-					.println("Incorrect number of arguments (input graph file missing).\n");
+					.println("Usage: java -jar <name_of_the_jar>.ar <filename> [<is_verbose_mode>]\n");
 			return;
 		}
 
 		String filename = args[0];
+        Boolean isDebugMode = getDebugMode(args);
 
 		try {
 			List<String> input = readFile(filename);
 			Graph graph = GraphReader.read(input);
 
-			if (graph.isInterval())
+			if (graph.isInterval(isDebugMode))
 				System.out.println("Graph is interval");
 			else
 				System.out.println("Graph is not interval");
@@ -40,7 +41,14 @@ class Run {
 		}
 	}
 
-	/**
+    private static Boolean getDebugMode(String[] args) {
+        if (args.length == 2)
+            return Boolean.parseBoolean(args[1]);
+        else
+            return false;
+    }
+
+    /**
 	 * Reads file line by line to list of strings.
 	 * 
 	 * @param filename
