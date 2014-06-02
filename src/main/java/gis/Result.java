@@ -45,6 +45,11 @@ public class Result extends ArrayList<NodeNameWithNumber>  {
         return min;
     }
 
+    /**
+     * Returns a number of a node with given name
+     * @param node name
+     * @return number
+     */
     public int getByName(String name)
     {
         for(NodeNameWithNumber n: this) {
