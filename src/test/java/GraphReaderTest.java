@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
+import utils.Utils;
 
 /**
  * Tests {{gis.GraphReader}} class.
@@ -17,7 +18,7 @@ public class GraphReaderTest {
 	@Test
 	public void testRead() throws IncorrectInputFormat {
 		String input = "A B C\nB A\nC A";
-		Graph graph = GraphReader.read(splitLines(input));
+		Graph graph = Utils.readGraphFromString(input);
 		assertEquals(graph.size(), 3);
 	}
 
@@ -28,22 +29,11 @@ public class GraphReaderTest {
 		String errorMessage = "";
 
 		try {
-			GraphReader.read(splitLines(input));
+            Utils.readGraphFromString(input);
 		} catch (IncorrectInputFormat e) {
 			errorMessage = e.getMessage();
 		}
 
 		assertTrue(errorMessage.contains("Not enough parameters in line"));
-	}
-
-	/**
-	 * Splits given string by newline (\n) character to list of lines.
-	 * 
-	 * @param in
-	 *            input string
-	 * @return list of lines
-	 */
-	private List<String> splitLines(String in) {
-		return Arrays.asList(in.split("\n"));
 	}
 }
