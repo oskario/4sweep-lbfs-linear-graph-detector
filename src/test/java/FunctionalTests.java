@@ -39,8 +39,7 @@ public class FunctionalTests {
     @Test
     public void secondTest() throws IncorrectInputFormat {
         String input = "A B\nB A\nC D\nD C";
-        Graph graph = Utils.readGraphFromString(input);
-        assertTrue(!graph.isInterval(false));
+        assertTrue(!isInterval(input));
     }
 
     /**
