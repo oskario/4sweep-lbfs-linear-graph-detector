@@ -1,21 +1,21 @@
 import gis.Graph;
+import gis.GraphReader;
 import gis.error.IncorrectInputFormat;
 import org.junit.Test;
-import utils.Utils;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class FunctionalTests {
 
     /**
      * Creates graph from given input and returns isInterval
+     *
      * @param input graph in string
      * @return isInterval
      * @throws IncorrectInputFormat
      */
     private Boolean isInterval(String input) throws IncorrectInputFormat {
-        Graph graph = Utils.readGraphFromString(input);
+        Graph graph = GraphReader.read(input);
         return graph.isInterval(false);
     }
 
