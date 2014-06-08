@@ -8,15 +8,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Run {
+    private static final String USAGE =
+            "Usage: java -jar <jar_name>.jar [-d] input_filename\n" +
+            "\nOptions:\n" +
+            "-d\tdebug mode";
+
     public static void main(String[] args) {
-        if (args.length < 1 || args.length > 2) {
-            System.out
-                    .println("Usage: java -jar <name_of_the_jar>.ar <filename> [<is_verbose_mode>]\n");
+
+        String filename;
+        Boolean isDebugMode = false;
+
+        if (args.length == 1) {
+            filename = args[0];
+        } else if (args.length == 2) {
+            isDebugMode = args[0].equals("-d");
+            filename = args[1];
+        } else {
+            System.out.println(USAGE);
             return;
         }
-
-        String filename = args[0];
-        Boolean isDebugMode = getDebugMode(args);
 
         try {
             List<String> input = readFile(filename);
@@ -31,21 +41,13 @@ class Run {
             System.err.format("File '%s' was not found", filename);
 
         } catch (IOException e) {
-            System.err
-                    .format("IOException while trying to read '%s'", filename);
+            System.err.format("IOException while trying to read '%s'", filename);
             e.printStackTrace();
 
         } catch (Exception e) {
-            System.err.format("Unknown exception occured: %s", e.getMessage());
+            System.err.format("Unknown exception occurred: %s", e.getMessage());
             e.printStackTrace();
         }
-    }
-
-    private static Boolean getDebugMode(String[] args) {
-        if (args.length == 2)
-            return Boolean.parseBoolean(args[1]);
-        else
-            return false;
     }
 
     /**
