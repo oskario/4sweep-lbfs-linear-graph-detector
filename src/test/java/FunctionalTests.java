@@ -3,6 +3,7 @@ import gis.GraphReader;
 import gis.error.IncorrectInputFormat;
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class FunctionalTests {
@@ -39,7 +40,7 @@ public class FunctionalTests {
     @Test
     public void secondTest() throws IncorrectInputFormat {
         String input = "A B\nB A\nC D\nD C";
-        assertTrue(!isInterval(input));
+        assertFalse(isInterval(input));
     }
 
     /**
@@ -62,7 +63,7 @@ public class FunctionalTests {
     @Test
     public void fourthTest() throws IncorrectInputFormat {
         String input = "A C\nB D\nC A\nD B";
-        assertTrue(!isInterval(input));
+        assertFalse(isInterval(input));
     }
 
     /**
@@ -89,7 +90,7 @@ public class FunctionalTests {
     @Test
     public void sixthTest() throws IncorrectInputFormat {
         String input = "A B\nB A C\nC B D\nD C\nE F\nF E";
-        assertTrue(!isInterval(input));
+        assertFalse(isInterval(input));
     }
 
     /**
