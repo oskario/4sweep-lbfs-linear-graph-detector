@@ -14,8 +14,7 @@ public class ResultWithNeighbours extends Hashtable<String, Node> {
      * @param name node name
      * @return size of neighbours
      */
-    public int getSize(String name)
-    {
+    public int getSize(String name) {
         for (Node node : this.values()) {
             if (node.getName().equals(name))
                 return node.getNeighbours().size();
@@ -28,16 +27,14 @@ public class ResultWithNeighbours extends Hashtable<String, Node> {
      *
      * @return random node
      */
-    public String getRandom()
-    {
+    public String getRandom() {
         Object[] nodes = this.values().toArray();
-        int random = new Random().nextInt(nodes.length-1);
-        Node node = (Node)nodes[random];
+        int random = new Random().nextInt(nodes.length - 1);
+        Node node = (Node) nodes[random];
         return node.getName();
     }
 
-    public int getByName(String name)
-    {
+    public int getByName(String name) {
         Object[] v = this.values().toArray();
         for (Object object : v) {
             Node n = (Node) object;
@@ -47,8 +44,7 @@ public class ResultWithNeighbours extends Hashtable<String, Node> {
         return 0;
     }
 
-    public void print()
-    {
+    public void print() {
         for (Node node : this.values()) {
             node.print();
             System.out.println();

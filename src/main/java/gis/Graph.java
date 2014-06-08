@@ -13,25 +13,25 @@ import java.util.List;
  */
 public class Graph {
 
-	/**
-	 * List of graph's nodes.
-	 */
-	private List<Node> nodes;
+    /**
+     * List of graph's nodes.
+     */
+    private List<Node> nodes;
 
-	public Graph() {
-		this.nodes = new LinkedList<Node>();
-	}
+    public Graph() {
+        this.nodes = new LinkedList<Node>();
+    }
 
-	public Graph(List<Node> nodes) {
-		this.nodes = nodes;
-	}
+    public Graph(List<Node> nodes) {
+        this.nodes = nodes;
+    }
 
-	/**
-	 * Detects weather graph is interval.
-	 * 
-	 * @return true if the graph is interval, otherwise false
-	 */
-	public boolean isInterval(Boolean isDebugMode) {
+    /**
+     * Detects whether graph is interval.
+     *
+     * @return true if the graph is interval, otherwise false
+     */
+    public boolean isInterval(Boolean isDebugMode) {
         try {
             Generic generic = new Generic(this);
             Result sigma = generic.start();
@@ -107,40 +107,39 @@ public class Graph {
                 }
             }
             return false;
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             return false;
         }
-	}
+    }
 
-	/**
-	 * Returns the size of the graph (number of nodes).
-	 * 
-	 * @return number of nodes in the graph
-	 */
-	public int size() {
-		if (this.getNodes() != null)
-			return this.getNodes().size();
-		else
-			return 0;
-	}
+    /**
+     * Returns the size of the graph (number of nodes).
+     *
+     * @return number of nodes in the graph
+     */
+    public int size() {
+        if (this.getNodes() != null)
+            return this.getNodes().size();
+        else
+            return 0;
+    }
 
-	public List<Node> getNodes() {
-		return nodes;
-	}
+    public List<Node> getNodes() {
+        return nodes;
+    }
 
-	public void setNodes(List<Node> nodes) {
-		this.nodes = nodes;
-	}
+    public void setNodes(List<Node> nodes) {
+        this.nodes = nodes;
+    }
 
-	public void addNode(Node node) {
-		if (this.nodes != null) {
-			this.nodes.add(node);
-		}
-	}
+    public void addNode(Node node) {
+        if (this.nodes != null) {
+            this.nodes.add(node);
+        }
+    }
 
     public Node getNodeByName(String neighbourName) {
-        for(Node node : this.nodes) {
+        for (Node node : this.nodes) {
             if (node.getName().equals(neighbourName)) {
                 return node;
             }
@@ -148,16 +147,13 @@ public class Graph {
         return null;
     }
 
-    public void clean()
-    {
-        for (Node n: nodes)
-        {
+    public void clean() {
+        for (Node n : nodes) {
             n.reset();
         }
     }
 
-    private Result getIplus(Graph g, Result result)
-    {
+    private Result getIplus(Graph g, Result result) {
         Result iPlus = new Result();
 
         for (NodeNameWithNumber aResult : result) {
@@ -181,34 +177,29 @@ public class Graph {
      * before v in sigma+ and sigma++ respectively, and are
      * adjacent to a vertex after v in sigma+ and sigma++
      * respectively.
+     *
      * @param graph
      * @param result
      * @return result with neighbours
      */
-    private ResultWithNeighbours ABNeighbors(Graph graph, Result result)
-    {
+    private ResultWithNeighbours ABNeighbors(Graph graph, Result result) {
         ResultWithNeighbours abNbrs = new ResultWithNeighbours();
 
-        for (int i = 0; i < result.size(); i++)
-        {
+        for (int i = 0; i < result.size(); i++) {
             String nodeName = result.get(i).getName();
             Node node = graph.getNodeByName(nodeName);
             int max = node.getNumber();
             LinkedList<String> listNbrs = new LinkedList<String>();
-            for (int x = 0; x < (node.getNumber()-1); x++)
-            {
+            for (int x = 0; x < (node.getNumber() - 1); x++) {
                 String beforeName = result.get(x).getName();
                 Node n = graph.getNodeByName(beforeName);
                 Iterator<String> it = n.getNeighbours().iterator();
                 boolean done = false;
-                while (it.hasNext())
-                {
+                while (it.hasNext()) {
                     String nbr = it.next();
-                    for (int y = node.getNumber(); y < result.size(); y++)
-                    {
+                    for (int y = node.getNumber(); y < result.size(); y++) {
                         String after = result.get(y).getName();
-                        if (nbr.equals(after))
-                        {
+                        if (nbr.equals(after)) {
                             listNbrs.add(beforeName);
                             done = true;
                             break;
