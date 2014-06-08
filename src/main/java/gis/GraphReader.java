@@ -50,12 +50,6 @@ public class GraphReader {
             nodes.put(node.getName(), node);
             for (int j = 1; j < params.length; j++) {
                 String neighbourName = params[j];
-
-//                if (!nodes.containsKey(neighbourName)) {
-//                    Node neighbour = new Node(neighbourName);
-//                    nodes.put(neighbourName, neighbour);
-//                }
-
                 node.addNeighbour(neighbourName);
             }
 
