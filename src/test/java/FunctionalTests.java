@@ -117,4 +117,16 @@ public class FunctionalTests {
         String input = "A B C D\nB A\nC A\nD A";
         assertTrue(isInterval(input));
     }
+
+    /**
+     * A  -----------------
+     * B   ----
+     * C        ----
+     * D             ----
+     */
+    @Test
+    public void ninthTest() throws IncorrectInputFormat {
+        String input = "A B C D\nB A\nC A\nD A";
+        assertTrue(isInterval(input));
+    }
 }
